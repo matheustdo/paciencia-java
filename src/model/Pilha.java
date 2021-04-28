@@ -17,9 +17,10 @@ public class Pilha {
 		return this.cartas.pop();
 	}
 	
-	public void virarCartaDoTopo() {
+	public Carta virarCartaDoTopo() {
 		Carta topo = this.cartas.peek();
 		topo.mostrar();
+		return topo;
 	}
 	
 	public boolean isEmpty() {

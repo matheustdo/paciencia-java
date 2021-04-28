@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import model.Pilha;
 import model.Carta;
 import model.Naipe;
-import model.Valor;
+import model.Numeracao;
 
 /**
  * Essa classe funciona como o controlador da partida de paciï¿½ncia.
@@ -22,13 +22,13 @@ public class Partida {
 	private Pilha descarte = new Pilha();
 	
 	/**
-	 * O construtor de Partida() preenche todas as estruturas de dados necessï¿½rias
+	 * O construtor de Partida() preenche todas as estruturas de dados necessárias
 	 * para o funcionamento da partida.
 	 */
 	public Partida() {
-		/* Preenche o estoque com todas as 52 cartas disponï¿½veis no jogo. */
+		/* Preenche o estoque com todas as 52 cartas disponíveis no jogo. */
 		for (Naipe naipe : Naipe.values()) {
-			for (Valor valor : Valor.values()) {
+			for (Numeracao valor : Numeracao.values()) {
 				Carta carta = new Carta(naipe, valor);
 				estoque.push(carta);
 			}
@@ -37,7 +37,7 @@ public class Partida {
 		/* Embaralha as cartas no estoque. */
 		Collections.shuffle(estoque);
 
-		/* Instancia e adiciona pilhas na estrutura das fundaï¿½ï¿½es. */
+		/* Instancia e adiciona pilhas na estrutura das fundações. */
 		for (int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Pilha fundacao = new Pilha();
 			fundacoes.add(fundacao);
@@ -49,8 +49,8 @@ public class Partida {
 			fileiras.add(fileira);
 		}
 
-		/* Distribui as cartas do estoque nas fileiras disponï¿½veis, onde cada fileira
-		 * recebe uma quantidade de cartas igual ao nï¿½mero da fileira. */
+		/* Distribui as cartas do estoque nas fileiras disponíveis, onde cada fileira
+		 * recebe uma quantidade de cartas igual ao número da fileira. */
 		for(int i = 0; i < fileiras.size(); i++) {
 			Pilha fileira = fileiras.get(i);
 			
@@ -115,6 +115,8 @@ public class Partida {
 		}
 	}
 	
-	public boolean verificarJogada(Carta cartaOrigem, Carta destino) {}
+	public boolean verificarJogada(Carta cartaOrigem, Carta destino) {
+		return true;
+	}
 	
 }

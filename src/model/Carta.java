@@ -1,13 +1,13 @@
 package model;
 
-public class Carta {
+public class Carta implements Comparable<Carta> {
 	private Naipe naipe;
-	private Valor valor;
+	private Numeracao numeracao;
 	private Lado lado;
 	
-	public Carta(Naipe naipe, Valor valor) {
+	public Carta(Naipe naipe, Numeracao valor) {
 		this.naipe = naipe;
-		this.valor = valor;
+		this.numeracao = valor;
 		this.lado = Lado.BAIXO;
 	}
 
@@ -19,12 +19,12 @@ public class Carta {
 		this.naipe = naipe;
 	}
 
-	public Valor getValor() {
-		return valor;
+	public Numeracao getNumeracao() {
+		return numeracao;
 	}
 
-	public void setValor(Valor valor) {
-		this.valor = valor;
+	public void setNumeracao(Numeracao valor) {
+		this.numeracao = valor;
 	}
 
 	public Lado getLado() {
@@ -41,12 +41,23 @@ public class Carta {
 		
 		/* Para formatar a string da carta, se o valor dela tiver apenas 1 caractere, um espaço
 		 * é inserido para que o conteúdo da carta possua 3 caracteres, exemplo: [5 ♥] */
-		if (valor.toString().length() == 1) {
-			return ("[" + valor.toString() + " " + naipe.toString() + "]");
+		if (numeracao.toString().length() == 1) {
+			return ("[" + numeracao.toString() + " " + naipe.toString() + "]");
 		}
 
 		/* Se a carta possuir dois caracteres, ela ficará como: [10♥] */
-		return ("[" + valor.toString() + naipe.toString() + "]");
+		return ("[" + numeracao.toString() + naipe.toString() + "]");
+	}
+
+	@Override
+	public int compareTo(Carta outraCarta) {
+		if(outraCarta.getNumeracao().getValor() > this.getNumeracao().getValor()) {
+			return -1;
+		} else if (outraCarta.getNumeracao().getValor() < this.getNumeracao().getValor()) {
+			return 1;
+		}
+		
+		return 0;
 	}
 	
 	
