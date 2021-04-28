@@ -1,19 +1,25 @@
 package model;
 
 public enum Naipe {
-	ESPADAS("♠"),
-	COPAS("♥"), 
-	PAUS("♣"), 
-	OUROS("♦");
+	ESPADAS("♠", "Preto"),
+	COPAS("♥", "Vermelho"), 
+	PAUS("♣", "Preto"), 
+	OUROS("♦", "Vermelho");
 	
 	private String simbolo;
+	private String cor;
 	
-    private Naipe(String simbolo) {
+    private Naipe(String simbolo, String cor) {
     	this.simbolo = simbolo;
+    	this.cor = cor;
     }
     
-    @Override
+    public String getCor() {
+		return cor;
+	}
+
+	@Override
     public String toString() {
-    	return simbolo;
+    	return this.simbolo;
     }
 }

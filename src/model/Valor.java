@@ -23,6 +23,6 @@ public enum Valor {
     
     @Override
     public String toString() {
-    	return simbolo;
+    	return this.simbolo;
     }
 }

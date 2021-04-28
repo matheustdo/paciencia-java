@@ -28,16 +28,25 @@ public class Carta {
 	}
 
 	public Lado getLado() {
-		return lado;
+		return this.lado;
 	}
-
-	public void setLado(Lado lado) {
-		this.lado = lado;
+	
+	public void mostrar() {
+		this.lado = Lado.CIMA;
 	}
 	
 	@Override
 	public String toString() {
-		return (valor.toString() + ' ' + naipe.toString() + ' ' + lado.toString());
+		if (this.lado == Lado.BAIXO) return "[< >]";
+		
+		/* Para formatar a string da carta, se o valor dela tiver apenas 1 caractere, um espaço
+		 * é inserido para que o conteúdo da carta possua 3 caracteres, exemplo: [5 ♥] */
+		if (valor.toString().length() == 1) {
+			return ("[" + valor.toString() + " " + naipe.toString() + "]");
+		}
+
+		/* Se a carta possuir dois caracteres, ela ficará como: [10♥] */
+		return ("[" + valor.toString() + naipe.toString() + "]");
 	}
 	
 	
