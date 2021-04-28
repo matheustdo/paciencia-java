@@ -1,9 +1,9 @@
 package model;
 
 public class Carta {
-	Naipe naipe;
-	Valor valor;
-	Lado lado;
+	private Naipe naipe;
+	private Valor valor;
+	private Lado lado;
 	
 	public Carta(Naipe naipe, Valor valor) {
 		this.naipe = naipe;
@@ -33,6 +33,11 @@ public class Carta {
 
 	public void setLado(Lado lado) {
 		this.lado = lado;
+	}
+	
+	@Override
+	public String toString() {
+		return (valor.toString() + ' ' + naipe.toString() + ' ' + lado.toString());
 	}
 	
 	
