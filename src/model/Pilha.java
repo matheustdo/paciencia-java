@@ -22,6 +22,10 @@ public class Pilha {
 		topo.mostrar();
 	}
 	
+	public boolean isEmpty() {
+		return cartas.isEmpty();
+	}
+	
 	@Override
 	public String toString() {
 		String visualizacao = this.cartas.toString();

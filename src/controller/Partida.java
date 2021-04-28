@@ -10,7 +10,7 @@ import model.Naipe;
 import model.Valor;
 
 /**
- * Essa classe funciona como o controlador da partida de paciência.
+ * Essa classe funciona como o controlador da partida de paciï¿½ncia.
  * @author Matheus Teles e Rafael Azevedo
  */
 public class Partida {
@@ -22,11 +22,11 @@ public class Partida {
 	private Pilha descarte = new Pilha();
 	
 	/**
-	 * O construtor de Partida() preenche todas as estruturas de dados necessárias
+	 * O construtor de Partida() preenche todas as estruturas de dados necessï¿½rias
 	 * para o funcionamento da partida.
 	 */
 	public Partida() {
-		/* Preenche o estoque com todas as 52 cartas disponíveis no jogo. */
+		/* Preenche o estoque com todas as 52 cartas disponï¿½veis no jogo. */
 		for (Naipe naipe : Naipe.values()) {
 			for (Valor valor : Valor.values()) {
 				Carta carta = new Carta(naipe, valor);
@@ -37,7 +37,7 @@ public class Partida {
 		/* Embaralha as cartas no estoque. */
 		Collections.shuffle(estoque);
 
-		/* Instancia e adiciona pilhas na estrutura das fundações. */
+		/* Instancia e adiciona pilhas na estrutura das fundaï¿½ï¿½es. */
 		for (int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Pilha fundacao = new Pilha();
 			fundacoes.add(fundacao);
@@ -49,8 +49,8 @@ public class Partida {
 			fileiras.add(fileira);
 		}
 
-		/* Distribui as cartas do estoque nas fileiras disponíveis, onde cada fileira
-		 * recebe uma quantidade de cartas igual ao número da fileira. */
+		/* Distribui as cartas do estoque nas fileiras disponï¿½veis, onde cada fileira
+		 * recebe uma quantidade de cartas igual ao nï¿½mero da fileira. */
 		for(int i = 0; i < fileiras.size(); i++) {
 			Pilha fileira = fileiras.get(i);
 			
@@ -64,6 +64,7 @@ public class Partida {
 		
 		log();
 		pegarCartaEstoque();
+		log();
 	}
 	
 	public void log() {
@@ -81,15 +82,17 @@ public class Partida {
 		System.out.println();
 		System.out.println();
 		
+		int idFundacao = 1;
 		for(Pilha fundacao : fundacoes) {
-			System.out.print("Fundacao:  ");
+			System.out.print(idFundacao++ + " - Fundacao:  ");
 			System.out.println(fundacao);
 		}
 
 		System.out.println();
 		
+		int idFileira = 1;
 		for(Pilha fileira : fileiras) {
-			System.out.print("Tableau:   ");
+			System.out.print(idFileira++ +" - Tableau:   ");
 			System.out.println(fileira);
 		}
 		
@@ -103,4 +106,15 @@ public class Partida {
 			descarte.colocarCarta(carta);
 		}
 	}
+	
+	public void moverDescarteParaFileira(int idFileiraDestino) {
+		if(!descarte.isEmpty()) {
+			Carta cartaOrigem = descarte.virarCartaDoTopo();
+			Carta cartaDestino = fileiras.get(idFileiraDestino - 1).virarCartaDoTopo();
+			verificarJogada(cartaOrigem, cartaDestino);
+		}
+	}
+	
+	public boolean verificarJogada(Carta cartaOrigem, Carta destino) {}
+	
 }
