@@ -38,13 +38,13 @@ public class Partida {
 		Collections.shuffle(estoque);
 
 		/* Instancia e adiciona pilhas na estrutura das fundações. */
-		for (int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
+		for(int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Pilha fundacao = new Pilha();
 			fundacoes.add(fundacao);
 		}
 
 		/* Instancia e adiciona pilhas na estrutura das fileiras. */
-		for (int i = 0; i < QUANTIDADE_FILEIRAS; i++) {
+		for(int i = 0; i < QUANTIDADE_FILEIRAS; i++) {
 			Pilha fileira = new Pilha();
 			fileiras.add(fileira);
 		}
@@ -63,6 +63,72 @@ public class Partida {
 		}
 		
 		log();
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		pegarCartaEstoque();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
 		pegarCartaEstoque();
 		log();
 	}
@@ -106,17 +172,55 @@ public class Partida {
 			descarte.colocarCarta(carta);
 		}
 	}
-	
-	public void moverDescarteParaFileira(int idFileiraDestino) {
+
+	public void moverDoDescarteParaFileira(int idFileiraDestino) {
 		if(!descarte.isEmpty()) {
+			Pilha fileiraDestino = fileiras.get(idFileiraDestino - 1);
 			Carta cartaOrigem = descarte.virarCartaDoTopo();
-			Carta cartaDestino = fileiras.get(idFileiraDestino - 1).virarCartaDoTopo();
-			verificarJogada(cartaOrigem, cartaDestino);
+			
+			if(fileiraDestino.isEmpty()) {
+				descarte.retirarCarta();
+				fileiraDestino.colocarCarta(cartaOrigem);
+			} else {
+				Carta cartaDestino = fileiraDestino.virarCartaDoTopo();
+				
+				if(verificarJogada(cartaOrigem, cartaDestino)) {
+					descarte.retirarCarta();
+					fileiraDestino.colocarCarta(cartaOrigem);
+				}
+			}
+		}
+	}
+
+	public void moverDeFileiraParaFileira(int idFileiraOrigem, int idFileiraDestino) {
+		Pilha fileiraOrigem = fileiras.get(idFileiraOrigem - 1);
+		
+		if(!fileiraOrigem.isEmpty()) {
+			Pilha fileiraDestino = fileiras.get(idFileiraDestino - 1);
+			Carta cartaOrigem = fileiraOrigem.virarCartaDoTopo();
+			
+			if(fileiraDestino.isEmpty()) {
+				fileiraOrigem.retirarCarta();
+				fileiraDestino.colocarCarta(cartaOrigem);
+			} else {
+				Carta cartaDestino = fileiraDestino.virarCartaDoTopo();
+				
+				if(verificarJogada(cartaOrigem, cartaDestino)) {
+					fileiraOrigem.retirarCarta();
+					fileiraDestino.colocarCarta(cartaOrigem);
+				}
+			}
 		}
 	}
 	
-	public boolean verificarJogada(Carta cartaOrigem, Carta destino) {
-		return true;
+	public boolean verificarJogada(Carta cartaOrigem, Carta cartaDestino) {
+		if (cartaOrigem.getNumeracao().getValor() - cartaDestino.getNumeracao().getValor() == -1) {
+			if(!cartaOrigem.getNaipe().getCor().equals(cartaDestino.getNaipe().getCor())) {
+				return true;
+			}
+		}
+		
+		return false;
 	}
 	
 }

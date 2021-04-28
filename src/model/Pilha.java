@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Collections;
 import java.util.Stack;
 
 public class Pilha {
@@ -29,7 +30,7 @@ public class Pilha {
 	
 	@Override
 	public String toString() {
-		String visualizacao = this.cartas.toString();
+		String visualizacao = cartas.toString();
 		
 		if (visualizacao.length() > 2) return visualizacao.substring(1, visualizacao.length() - 1);
 		return "";

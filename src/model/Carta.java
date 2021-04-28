@@ -1,6 +1,6 @@
 package model;
 
-public class Carta implements Comparable<Carta> {
+public class Carta {
 	private Naipe naipe;
 	private Numeracao numeracao;
 	private Lado lado;
@@ -48,17 +48,4 @@ public class Carta implements Comparable<Carta> {
 		/* Se a carta possuir dois caracteres, ela ficará como: [10♥] */
 		return ("[" + numeracao.toString() + naipe.toString() + "]");
 	}
-
-	@Override
-	public int compareTo(Carta outraCarta) {
-		if(outraCarta.getNumeracao().getValor() > this.getNumeracao().getValor()) {
-			return -1;
-		} else if (outraCarta.getNumeracao().getValor() < this.getNumeracao().getValor()) {
-			return 1;
-		}
-		
-		return 0;
-	}
-	
-	
 }
