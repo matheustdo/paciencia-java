@@ -28,6 +28,7 @@ public class Pilha {
 		return cartas.isEmpty();
 	}
 	
+	
 	@Override
 	public String toString() {
 		String visualizacao = cartas.toString();

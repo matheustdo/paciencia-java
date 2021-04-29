@@ -35,6 +35,10 @@ public class Carta {
 		this.lado = Lado.CIMA;
 	}
 	
+	public void esconder() {
+		this.lado = Lado.BAIXO;
+	}
+	
 	@Override
 	public String toString() {
 		if (this.lado == Lado.BAIXO) return "[< >]";

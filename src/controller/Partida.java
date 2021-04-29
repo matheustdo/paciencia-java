@@ -10,7 +10,7 @@ import model.Naipe;
 import model.Numeracao;
 
 /**
- * Essa classe funciona como o controlador da partida de paciï¿½ncia.
+ * Essa classe funciona como o controlador da partida de paciÃªncia.
  * @author Matheus Teles e Rafael Azevedo
  */
 public class Partida {
@@ -22,11 +22,11 @@ public class Partida {
 	private Pilha descarte = new Pilha();
 	
 	/**
-	 * O construtor de Partida() preenche todas as estruturas de dados necessárias
+	 * O construtor de Partida() preenche todas as estruturas de dados necessÃ¡rias.
 	 * para o funcionamento da partida.
 	 */
 	public Partida() {
-		/* Preenche o estoque com todas as 52 cartas disponíveis no jogo. */
+		/* Preenche o estoque com todas as 52 cartas disponÃ­veis no jogo. */
 		for (Naipe naipe : Naipe.values()) {
 			for (Numeracao valor : Numeracao.values()) {
 				Carta carta = new Carta(naipe, valor);
@@ -37,7 +37,7 @@ public class Partida {
 		/* Embaralha as cartas no estoque. */
 		Collections.shuffle(estoque);
 
-		/* Instancia e adiciona pilhas na estrutura das fundações. */
+		/* Instancia e adiciona pilhas na estrutura das fundaÃ§Ãµes. */
 		for(int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Pilha fundacao = new Pilha();
 			fundacoes.add(fundacao);
@@ -49,8 +49,8 @@ public class Partida {
 			fileiras.add(fileira);
 		}
 
-		/* Distribui as cartas do estoque nas fileiras disponíveis, onde cada fileira
-		 * recebe uma quantidade de cartas igual ao número da fileira. */
+		/* Distribui as cartas do estoque nas fileiras disponÃ­veis, onde cada fileira
+		 * recebe uma quantidade de cartas igual ao nÃºmero da fileira. */
 		for(int i = 0; i < fileiras.size(); i++) {
 			Pilha fileira = fileiras.get(i);
 			
@@ -63,74 +63,15 @@ public class Partida {
 		}
 		
 		log();
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
-		pegarCartaEstoque();
-		moverDoDescarteParaFileira(1);
-		moverDoDescarteParaFileira(2);
-		moverDoDescarteParaFileira(3);
-		moverDoDescarteParaFileira(4);
-		moverDoDescarteParaFileira(5);
+		for (int i = 0; i < 23; i++) {
+			pegarCartaEstoque();
+		}
+		log();
 		pegarCartaEstoque();
 		log();
+		pegarCartaEstoque();
+		log();
+		
 	}
 	
 	public void log() {
@@ -165,11 +106,25 @@ public class Partida {
 		System.out.println();
 	}
 	
+	/**
+	 * Movimenta cartas do estoque para o descarte. Caso o descarte esvazie, as cartas do estoque retornam para o descarte.
+	 */
 	public void pegarCartaEstoque() {
-		if(!estoque.isEmpty()) {
-			Carta carta = estoque.pop();
-			carta.mostrar();
-			descarte.colocarCarta(carta);
+		if(!estoque.isEmpty()) { // estoque nÃ£o estÃ¡ vazio
+			Carta carta = estoque.pop(); // pega a carta
+			carta.mostrar(); // vira a carta para cima
+			descarte.colocarCarta(carta); // coloca a carta no descarte
+		}else { // estoque estÃ¡ vazio
+			while (!descarte.isEmpty()) { // enquanto descarte nÃ£o estiver vazio
+				Carta c = descarte.retirarCarta(); // retira a carta do estoque
+				c.esconder(); // vira a carta para baixo
+				estoque.push(c); // coloca a carta de volta ao estoque
+			}
+			if(!estoque.isEmpty()) { 
+				Carta carta = estoque.pop(); 
+				carta.mostrar(); 
+				descarte.colocarCarta(carta);
+			}
 		}
 	}
 
