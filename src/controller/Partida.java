@@ -16,6 +16,7 @@ import model.Numeracao;
 public class Partida {
 	private static final int QUANTIDADE_FUNDACOES = 4;
 	private static final int QUANTIDADE_FILEIRAS = 7;
+	private int qtdCartasVirarEstoque = 1;
 	private Stack<Carta> estoque = new Stack<>();
 	private ArrayList<Pilha> fundacoes = new ArrayList<Pilha>(QUANTIDADE_FUNDACOES);
 	private ArrayList<Pilha> fileiras = new ArrayList<Pilha>(QUANTIDADE_FILEIRAS);
@@ -64,12 +65,22 @@ public class Partida {
 		
 		log();
 		for (int i = 0; i < 23; i++) {
-			pegarCartaEstoque();
+			virarCartaEstoque();
 		}
 		log();
-		pegarCartaEstoque();
+		virarCartaEstoque();
 		log();
-		pegarCartaEstoque();
+		virarCartaEstoque();
+		log();
+		virarCartaEstoque();
+		log();
+		moverDoDescarteParaFileira(1);
+		moverDoDescarteParaFileira(2);
+		moverDoDescarteParaFileira(3);
+		moverDoDescarteParaFileira(4);
+		moverDoDescarteParaFileira(5);
+		moverDoDescarteParaFileira(6);
+		moverDoDescarteParaFileira(7);
 		log();
 		
 	}
@@ -106,10 +117,20 @@ public class Partida {
 		System.out.println();
 	}
 	
+	public void definirQtdDeCartasVirarEstoque (int n) {
+		qtdCartasVirarEstoque = n;
+	}
+	
+	public void virarCartaEstoque() {
+		for (int n = 0; n < qtdCartasVirarEstoque; n++) {
+			moverCartaEstoque();
+		}
+	}
+	
 	/**
-	 * Movimenta cartas do estoque para o descarte. Caso o descarte esvazie, as cartas do estoque retornam para o descarte.
+	 * Movimenta uma carta do estoque para o descarte. Caso o descarte esvazie, as cartas do estoque retornam para o descarte.
 	 */
-	public void pegarCartaEstoque() {
+	private void moverCartaEstoque() {
 		if(!estoque.isEmpty()) { // estoque não está vazio
 			Carta carta = estoque.pop(); // pega a carta
 			carta.mostrar(); // vira a carta para cima
@@ -127,7 +148,11 @@ public class Partida {
 			}
 		}
 	}
-
+	
+	/**
+	 * Movimenta uma carta do descarte para uma fileira.
+	 * @param idFileiraDestino identificador da fileira de destino.
+	 */
 	public void moverDoDescarteParaFileira(int idFileiraDestino) {
 		if(!descarte.isEmpty()) {
 			Pilha fileiraDestino = fileiras.get(idFileiraDestino - 1);
@@ -146,7 +171,12 @@ public class Partida {
 			}
 		}
 	}
-
+	
+	/**
+	 * Movimenta uma carta de uma fileira para outra fileira.
+	 * @param idFileiraOrigem identificador da fileira de origem.
+	 * @param idFileiraDestino identificador da fileira de destino.
+	 */
 	public void moverDeFileiraParaFileira(int idFileiraOrigem, int idFileiraDestino) {
 		Pilha fileiraOrigem = fileiras.get(idFileiraOrigem - 1);
 		
@@ -168,6 +198,12 @@ public class Partida {
 		}
 	}
 	
+	/**
+	 * Verifica se uma jogada é permitida analisando a descendência e distinção de cores.
+	 * @param cartaOrigem carta a ser movimentada.
+	 * @param cartaDestino carta a ser sobreposta.
+	 * @return booleano indicando se a jogada é permitida ou não.
+	 */
 	public boolean verificarJogada(Carta cartaOrigem, Carta cartaDestino) {
 		if (cartaOrigem.getNumeracao().getValor() - cartaDestino.getNumeracao().getValor() == -1) {
 			if(!cartaOrigem.getNaipe().getCor().equals(cartaDestino.getNaipe().getCor())) {
