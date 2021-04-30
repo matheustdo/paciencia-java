@@ -7,7 +7,8 @@ import controller.Partida;
 
 public class Main {
 	private static Partida partida = new Partida();
-	private static String mensagemSolicitacao = "Escolha uma opção: ";
+	private static String mensagemInformacao = "";
+	private static String mensagemSolicitacao = "▶ Escolha uma opção: ";
 	
 	private static void limparTela() {
 		for(int i = 0; i < 30; i++) {
@@ -17,23 +18,56 @@ public class Main {
 	
 	private static void opcoes() {
 		if(partida.temPartidaAtiva()) {
-			System.out.println("1 - Mover carta");
-			System.out.println("2 - Exibir jogo");
-			System.out.println("3 - Alterar nº de cartas a virar do estoque");
-			System.out.println("4 - Reiniciar");
-			System.out.println("5 - Finalizar");
+			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+			System.out.println("┃  1 - Mover carta                                                                ┃");
+			System.out.println("┃  2 - Exibir jogo                                                                ┃");
+			System.out.println("┃  3 - Alterar nº de cartas a virar do estoque                                    ┃");
+			System.out.println("┃  4 - Reiniciar                                                                  ┃");
+			System.out.println("┃  5 - Finalizar                                                                  ┃");
+			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+			System.out.println();
 		} else {
-			System.out.println("1 - Iniciar jogo");
-			System.out.println("2 - Finalizar");
+			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+			System.out.println("┃  1 - Iniciar jogo                                                               ┃");
+			System.out.println("┃  2 - Finalizar                                                                  ┃");
+			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+			System.out.println();
 		}
 	}
 	
 	private static void pedirInserirNovamente() {
-		mensagemSolicitacao = "Opção inválida. Insira novamente: ";
+		mensagemSolicitacao = "▶ Opção inválida. Insira novamente: ";
 	}
 	
-	private static void resetarSolicitacao() {
-		mensagemSolicitacao = "Escolha uma opção: ";
+	private static void resetarMensagens() {
+		mensagemSolicitacao = "▶ Escolha uma opção: ";
+		mensagemInformacao = "";
+	}
+	
+	private static void imprimirTituloInicio() {
+		System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
+		System.out.println("║   _______                      __                                __             ║");
+		System.out.println("║  |       \\                    |  \\                              |  \\            ║");
+		System.out.println("║  | $$$$$$$\\ ______    _______  \\$$  ______   _______    _______  \\$$  ______    ║");
+		System.out.println("║  | $$__/ $$|      \\  /       \\|  \\ /      \\ |       \\  /       \\|  \\ |      \\   ║");
+		System.out.println("║  | $$    $$ \\$$$$$$\\|  $$$$$$$| $$|  $$$$$$\\| $$$$$$$\\|  $$$$$$$| $$  \\$$$$$$\\  ║");
+		System.out.println("║  | $$$$$$$ /      $$| $$      | $$| $$    $$| $$  | $$| $$      | $$ /      $$  ║");
+		System.out.println("║  | $$     |  $$$$$$$| $$_____ | $$| $$$$$$$$| $$  | $$| $$_____ | $$|  $$$$$$$  ║");
+		System.out.println("║  | $$      \\$$    $$ \\$$     \\| $$ \\$$     \\| $$  | $$ \\$$     \\| $$ \\$$    $$  ║");
+		System.out.println("║   \\$$       \\$$$$$$$  \\$$$$$$$ \\$$  \\$$$$$$$ \\$$   \\$$  \\$$$$$$$ \\$$  \\$$$$$$$  ║");
+		System.out.println("║                                                                                 ║");
+		System.out.println("║                           Desenvolvido por Matheus Teles e Rafael Azevedo. v1.0 ║");
+		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
+	}
+	
+	
+	private static void imprimirTituloPartida() {
+		System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
+		System.out.println("║  ╔═╗╔═╗╔═╗╦╔═╗╔╗╔╔═╗╦╔═╗                                         Olá, jogador.  ║");
+		System.out.println("║  ╠═╝╠═╣║  ║╠╣ ║║║║  ║╠═╣                                      Essa é sua mesa.  ║");
+		System.out.println("║  ╩  ╩ ╩╚═╝╩╚═╝╝╚╝╚═╝╩╩ ╩                                         Vá com calma!  ║");
+		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
+		System.out.println();
 	}
 	
 	private static void menu() {
@@ -44,25 +78,45 @@ public class Main {
         	limparTela();
         	
             if(partida.temPartidaAtiva()) {
+            	imprimirTituloPartida();
             	System.out.println(partida.visualizarMesa());
     			opcoes();
+    			System.out.print(mensagemInformacao);
     			System.out.print(mensagemSolicitacao);
-    			resetarSolicitacao();
+    			resetarMensagens();
                 opcao = entrada.next();
                 
                 if(opcao.equals("1")) {
-                	
+            		String idCartaOrigem;
+            		System.out.print("▷ Informe o monte no qual carta se encontra: ");
+            		idCartaOrigem = entrada.next();
+                    
+                    try {
+                        Integer.parseInt(idCartaOrigem);
+
+                		String idCartaDestino;
+                		System.out.print("▷ Informe o monte de destino da carta: ");
+                		idCartaDestino = entrada.next();
+                        
+                        if (partida.moverCarta(Integer.parseInt(idCartaOrigem), Integer.parseInt(idCartaDestino))) {
+                        	mensagemInformacao = "✔ Carta movida com sucesso! \n";
+                        } else {
+                        	mensagemInformacao = "✖ Movimento inválido! \n";
+                        }
+                    } catch (NumberFormatException e) {
+                    	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
+                    }
                 } else if(opcao.equals("2")) {
                     
                 } else if(opcao.equals("3")) {
              
                 } else if(opcao.equals("4")) {
-            		System.out.print("Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
+            		System.out.print("▷ Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
                     
                     if(opcao.equals("1")) partida.iniciarPartida();
                 } else if(opcao.equals("5")) {
-            		System.out.print("Você realmente quer finalizar a partida? (1 - sim, `Qualquer coisa` - não): ");
+            		System.out.print("▷ Você realmente quer finalizar a partida? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
 
                     if(opcao.equals("1")) partida.encerrarPartida();
@@ -71,15 +125,16 @@ public class Main {
                     pedirInserirNovamente();
                 }
             } else {
+            	imprimirTituloInicio();
     			opcoes();
     			System.out.print(mensagemSolicitacao);
-    			resetarSolicitacao();
+    			resetarMensagens();
                 opcao = entrada.next();
                 
                 if(opcao.equals("1")) {
                 	partida.iniciarPartida();
                 } else if(opcao.equals("2")) {
-            		System.out.print("Você realmente quer finalizar o jogo? (1 - sim, `Qualquer coisa` - não): ");
+            		System.out.print("▷ Você realmente quer finalizar o jogo? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
                     
                     if(opcao.equals("1")) opcao = "-1";

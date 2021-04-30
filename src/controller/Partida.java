@@ -18,4 +18,8 @@ public class Partida {
 	public String visualizarMesa() {
 		return paciencia.toString();
 	}
+	
+	public boolean moverCarta(int idOrigem, int idDestino) {
+		return paciencia.moverCarta(idOrigem, 0idDestino);
+	}
 }

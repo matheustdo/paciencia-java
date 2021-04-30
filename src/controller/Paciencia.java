@@ -92,22 +92,24 @@ public class Paciencia {
 	@Override
 	public String toString() {
 		String opcoes = "";
+		String espacamento = "  ";
 		int idMonte = 1;
 		
 		for(MonteDeCartas monte : montes) {
+			if (idMonte > 9 && espacamento.equals("  ")) espacamento = " ";
 			if (monte instanceof Estoque) {
-				opcoes += idMonte++ + " - Estoque: ";
+				opcoes += "   " + idMonte++ + espacamento + "- Estoque:   ";
 				opcoes += monte + "\n";
 			}
 			else if (monte instanceof Descarte) {
-				opcoes += idMonte++ + " - Descarte: ";
+				opcoes += "   " + idMonte++ + espacamento + "- Descarte:  ";
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += idMonte++ + " - Fundação" + String.valueOf(idMonte - 3) + ": ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + String.valueOf(idMonte - 3) + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
-				opcoes += idMonte++ + " - Fileira" + String.valueOf(idMonte - 7) + ": ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + String.valueOf(idMonte - 7) + ":  ";
 				opcoes += monte + "\n";
 			}
 		}
