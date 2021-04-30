@@ -4,6 +4,8 @@ import java.util.Collections;
 import java.util.Stack;
 import java.util.ArrayList;
 
+import model.MonteDeCartas;
+import model.Fundacao;
 import model.Pilha;
 import model.Carta;
 import model.Naipe;
@@ -82,6 +84,13 @@ public class Partida {
 		moverDoDescarteParaFileira(6);
 		moverDoDescarteParaFileira(7);
 		log();
+		
+		MonteDeCartas mdc = new MonteDeCartas();
+		mdc.receberCarta(new Carta(Naipe.COPAS, Numeracao.AS));
+		
+		MonteDeCartas fnd = new Fundacao();
+		fnd.receberCarta(new Carta(Naipe.COPAS, Numeracao.AS));
+		fnd.retirarCarta();
 		
 	}
 	
