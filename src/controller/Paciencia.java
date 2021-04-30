@@ -63,6 +63,8 @@ public class Paciencia {
 	}*/
 	
 	public boolean moverCarta(int idOrigem, int idDestino) {
+		if(idOrigem  < 1 || idDestino < 1) return false;
+			
 		MonteDeCartas origem = montes.get(idOrigem - 1);
 		MonteDeCartas destino = montes.get(idDestino - 1);
 		
