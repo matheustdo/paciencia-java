@@ -2,14 +2,12 @@ package view;
 
 import java.util.Scanner;
 
-import controller.Fachada;
 import controller.Partida;
-import controller.Paciencia;
 
 
 public class Main {
-	private static Fachada fachada = new Fachada();
-	private static String mensagemSolicitacao = "";
+	private static Partida partida = new Partida();
+	private static String mensagemSolicitacao = "Escolha uma opção: ";
 	
 	private static void limparTela() {
 		for(int i = 0; i < 30; i++) {
@@ -18,7 +16,7 @@ public class Main {
 	}
 	
 	private static void opcoes() {
-		if(fachada.temPartidaAtiva()) {
+		if(partida.temPartidaAtiva()) {
 			System.out.println("1 - Mover carta");
 			System.out.println("2 - Exibir jogo");
 			System.out.println("3 - Alterar nº de cartas a virar do estoque");
@@ -42,16 +40,16 @@ public class Main {
 		String opcao;
 		Scanner entrada = new Scanner(System.in);
 		
-		do {	
-			if(fachada.temPartidaAtiva()) limparTela();
-			
-			opcoes();
-			
-			System.out.print(mensagemSolicitacao);
-			resetarSolicitacao();
-            opcao = entrada.next();
-            
-            if(fachada.temPartidaAtiva()) {
+		do {
+        	limparTela();
+        	
+            if(partida.temPartidaAtiva()) {
+            	System.out.println(partida.visualizarMesa());
+    			opcoes();
+    			System.out.print(mensagemSolicitacao);
+    			resetarSolicitacao();
+                opcao = entrada.next();
+                
                 if(opcao.equals("1")) {
                 	
                 } else if(opcao.equals("2")) {
@@ -62,19 +60,24 @@ public class Main {
             		System.out.print("Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
                     
-                    if(opcao.equals("1")) fachada.iniciarPartida();
+                    if(opcao.equals("1")) partida.iniciarPartida();
                 } else if(opcao.equals("5")) {
             		System.out.print("Você realmente quer finalizar a partida? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
 
-                    if(opcao.equals("1")) fachada.encerrarPartida();
+                    if(opcao.equals("1")) partida.encerrarPartida();
                 } else {
                     opcao = "0";
                     pedirInserirNovamente();
                 }
             } else {
+    			opcoes();
+    			System.out.print(mensagemSolicitacao);
+    			resetarSolicitacao();
+                opcao = entrada.next();
+                
                 if(opcao.equals("1")) {
-                	fachada.iniciarPartida();
+                	partida.iniciarPartida();
                 } else if(opcao.equals("2")) {
             		System.out.print("Você realmente quer finalizar o jogo? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();
@@ -91,9 +94,7 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		/*new Partida();
-		menu();*/
-		new Paciencia();
+		menu();
 	}
 
 }

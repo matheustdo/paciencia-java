@@ -10,7 +10,6 @@ import model.Estoque;
 import model.Descarte;
 
 public class Paciencia {
-	
 	private static final int QUANTIDADE_FUNDACOES = 4;
 	private static final int QUANTIDADE_FILEIRAS = 7;
 	/*private int qtdCartasVirarEstoque = 3;*/
@@ -19,7 +18,6 @@ public class Paciencia {
 	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
 	
 	public Paciencia() {
-		
 		montes.add(estoque);
 		montes.add(descarte);
 
@@ -37,15 +35,12 @@ public class Paciencia {
 			fileira.virarCartaDoTopo();
 			montes.add(fileira);
 		}
-		log();
+		
 		for (int i = 0; i < 24; i++) {
 			moverCarta(1,2);
 		}
-		log();
 		moverCarta(1,2);
-		log();
 		moverCarta(1,2);
-		log();
 	}
 	
 	/*
@@ -93,31 +88,31 @@ public class Paciencia {
 		}
 	}
 	
-	
-	public void log() {
 
+	@Override
+	public String toString() {
+		String opcoes = "";
 		int idMonte = 1;
+		
 		for(MonteDeCartas monte : montes) {
 			if (monte instanceof Estoque) {
-				System.out.print(idMonte++ + " - Estoque: ");
-				System.out.println(monte);
+				opcoes += idMonte++ + " - Estoque: ";
+				opcoes += monte + "\n";
 			}
 			else if (monte instanceof Descarte) {
-				System.out.print(idMonte++ + " - Descarte: ");
-				System.out.println(monte);
+				opcoes += idMonte++ + " - Descarte: ";
+				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				System.out.print(idMonte++ + " - FundaÃ§Ã£o: ");
-				System.out.println(monte);
+				opcoes += idMonte++ + " - Fundação" + String.valueOf(idMonte - 3) + ": ";
+				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
-				System.out.print(idMonte++ + " - Fileira: ");
-				System.out.println(monte);
+				opcoes += idMonte++ + " - Fileira" + String.valueOf(idMonte - 7) + ": ";
+				opcoes += monte + "\n";
 			}
-			
 		}
 
-		System.out.println();
-		
+		return opcoes;
 	}
 	
 }
