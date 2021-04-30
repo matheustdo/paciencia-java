@@ -30,4 +30,8 @@ public class Partida {
 	public boolean exibirCarta() {
 		return paciencia.exibirCarta();
 	}
+	
+	public boolean verificarVitoria() {
+		return paciencia.verificarVitoria();
+	}
 }

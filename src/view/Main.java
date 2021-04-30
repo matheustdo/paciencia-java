@@ -18,14 +18,22 @@ public class Main {
 	
 	private static void opcoes() {
 		if(partida.temPartidaAtiva()) {
-			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
-			System.out.println("┃  1 - Mover carta                                                                ┃");
-			System.out.println("┃  2 - Exibir carta                                                               ┃");
-			System.out.println("┃  3 - Alterar nº de cartas a virar do estoque                                    ┃");
-			System.out.println("┃  4 - Reiniciar                                                                  ┃");
-			System.out.println("┃  5 - Finalizar                                                                  ┃");
-			System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
-			System.out.println();
+			if(partida.verificarVitoria()) {
+				System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+				System.out.println("┃  1 - Iniciar nova partida                                                       ┃");
+				System.out.println("┃  2 - Voltar ao menu principal                                                   ┃");
+				System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+				System.out.println();
+			} else {
+				System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
+				System.out.println("┃  1 - Mover carta                                                                ┃");
+				System.out.println("┃  2 - Exibir carta                                                               ┃");
+				System.out.println("┃  3 - Alterar nº de cartas a virar do estoque                                    ┃");
+				System.out.println("┃  4 - Reiniciar                                                                  ┃");
+				System.out.println("┃  5 - Finalizar                                                                  ┃");
+				System.out.println("┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛");
+				System.out.println();
+			}
 		} else {
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 			System.out.println("┃  1 - Iniciar jogo                                                               ┃");
@@ -60,7 +68,6 @@ public class Main {
 		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
 	}
 	
-	
 	private static void imprimirTituloPartida() {
 		System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
 		System.out.println("║  ╔═╗╔═╗╔═╗╦╔═╗╔╗╔╔═╗╦╔═╗                                         Olá, jogador.  ║");
@@ -68,6 +75,29 @@ public class Main {
 		System.out.println("║  ╩  ╩ ╩╚═╝╩╚═╝╝╚╝╚═╝╩╩ ╩                                         Vá com calma!  ║");
 		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
 		System.out.println();
+	}
+
+	private static void imprimirVitoria() {
+		System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
+		System.out.println("║  ╔═╗╔═╗╔═╗╦╔═╗╔╗╔╔═╗╦╔═╗                                            Oooooopaa.  ║");
+		System.out.println("║  ╠═╝╠═╣║  ║╠╣ ║║║║  ║╠═╣                                        E aí, jogador.  ║");
+		System.out.println("║  ╩  ╩ ╩╚═╝╩╚═╝╝╚╝╚═╝╩╩ ╩                Parece que temos um vencedor por aqui!  ║");
+		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
+		System.out.println("╔═════════════════════════════════════════════════════════════════════════════════╗");
+		System.out.println("║                                                                                 ║");
+		System.out.println("║                              Aeeeeeeeeeeeeeeeeeeeee!!!                          ║");
+		System.out.println("║                                                                                 ║");
+		System.out.println("║        .------..------..------..------..------..------..------..------.         ║");
+		System.out.println("║        |P.--. ||A.--. ||R.--. ||A.--. ||B.--. ||É.--. ||N.--. ||S.--. |         ║");
+		System.out.println("║        | :/\\: || (\\/) || :(): || (\\/) || :(): || (\\/) || :(): || :/\\: |         ║");
+		System.out.println("║        | (__) || :\\/: || ()() || :\\/: || ()() || :\\/: || ()() || :\\/: |         ║");
+		System.out.println("║        | '--'P|| '--'A|| '--'R|| '--'A|| '--'B|| '--'É|| '--'N|| '--'S|         ║");
+		System.out.println("║        `------'`------'`------'`------'`------'`------'`------'`------'         ║");
+		System.out.println("║                                                                                 ║");
+		System.out.println("║                          Você acaba de vencer a partida!!!                      ║");
+		System.out.println("║                              Parabéns pela paciência!!!                         ║");
+		System.out.println("║                                                                                 ║");
+		System.out.println("╚═════════════════════════════════════════════════════════════════════════════════╝");
 	}
 	
 	private static void menu() {
@@ -78,66 +108,83 @@ public class Main {
         	limparTela();
         	
             if(partida.temPartidaAtiva()) {
-            	imprimirTituloPartida();
-            	System.out.println(partida.visualizarMesa());
-    			opcoes();
-    			System.out.print(mensagemInformacao);
-    			System.out.print(mensagemSolicitacao);
-    			resetarMensagens();
-                opcao = entrada.next();
-                
-                if(opcao.equals("1")) {
-            		String idCartaOrigem;
-            		System.out.print("▷ Informe o monte no qual carta se encontra: ");
-            		idCartaOrigem = entrada.next();
-                    
-                    try {
-                        Integer.parseInt(idCartaOrigem);
-
-                		String idCartaDestino;
-                		System.out.print("▷ Informe o monte de destino da carta: ");
-                		idCartaDestino = entrada.next();
-                        
-                        if (partida.moverCarta(Integer.parseInt(idCartaOrigem), Integer.parseInt(idCartaDestino))) {
-                        	mensagemInformacao = "✔ Carta movida com sucesso! \n";
-                        } else {
-                        	mensagemInformacao = "✖ Movimento inválido! \n";
-                        }
-                    } catch (NumberFormatException e) {
-                    	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
-                    }
-                } else if(opcao.equals("2")) {
-                	partida.exibirCarta();
-                } else if(opcao.equals("3")) {
-            		System.out.print("▷ Você deseja virar uma ou três cartas por vez? ");
-            		opcao = entrada.next();
-                    
-                    try {
-                    	int qtd = Integer.parseInt(opcao);
-                        
-                        if (qtd == 1 || qtd == 3) {
-                            partida.definirQtdVirarEstoque(qtd);
-                        	mensagemInformacao = "✔ Quantidade de cartas por vez alterada! \n";
-                        } else {
-                        	mensagemInformacao = "✖ Quantidade inválida! \n";
-                        }
-                    } catch (NumberFormatException e) {
-                    	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
-                    }
-                } else if(opcao.equals("4")) {
-            		System.out.print("▷ Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
-                    opcao = entrada.next();
-                    
-                    if(opcao.equals("1")) partida.iniciarPartida();
-                } else if(opcao.equals("5")) {
-            		System.out.print("▷ Você realmente quer finalizar a partida? (1 - sim, `Qualquer coisa` - não): ");
+            	if(partida.verificarVitoria()) {
+            		imprimirVitoria();
+        			opcoes();
+        			System.out.print(mensagemSolicitacao);
+        			resetarMensagens();
                     opcao = entrada.next();
 
-                    if(opcao.equals("1")) partida.encerrarPartida();
-                } else {
-                    opcao = "0";
-                    pedirInserirNovamente();
-                }
+                    if (opcao.equals("1")) {
+                    	partida.iniciarPartida();
+                    } else if(opcao.equals("2")) {
+                    	partida.encerrarPartida();
+                    } else {
+                        opcao = "0";
+                        pedirInserirNovamente();
+                    }
+            	} else {
+            		imprimirTituloPartida();
+                	System.out.println(partida.visualizarMesa());
+        			opcoes();
+        			System.out.print(mensagemInformacao);
+        			System.out.print(mensagemSolicitacao);
+        			resetarMensagens();
+                    opcao = entrada.next();
+                    
+                    if(opcao.equals("1")) {
+                		String idCartaOrigem;
+                		System.out.print("▷ Informe o monte no qual carta se encontra: ");
+                		idCartaOrigem = entrada.next();
+                        
+                        try {
+                            Integer.parseInt(idCartaOrigem);
+
+                    		String idCartaDestino;
+                    		System.out.print("▷ Informe o monte de destino da carta: ");
+                    		idCartaDestino = entrada.next();
+                            
+                            if (partida.moverCarta(Integer.parseInt(idCartaOrigem), Integer.parseInt(idCartaDestino))) {
+                            	mensagemInformacao = "✔ Carta movida com sucesso! \n";
+                            } else {
+                            	mensagemInformacao = "✖ Movimento inválido! \n";
+                            }
+                        } catch (NumberFormatException e) {
+                        	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
+                        }
+                    } else if(opcao.equals("2")) {
+                    	partida.exibirCarta();
+                    } else if(opcao.equals("3")) {
+                		System.out.print("▷ Você deseja virar uma ou três cartas por vez? ");
+                		opcao = entrada.next();
+                        
+                        try {
+                        	int qtd = Integer.parseInt(opcao);
+                            
+                            if (qtd == 1 || qtd == 3) {
+                                partida.definirQtdVirarEstoque(qtd);
+                            	mensagemInformacao = "✔ Quantidade de cartas por vez alterada! \n";
+                            } else {
+                            	mensagemInformacao = "✖ Quantidade inválida! \n";
+                            }
+                        } catch (NumberFormatException e) {
+                        	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
+                        }
+                    } else if(opcao.equals("4")) {
+                		System.out.print("▷ Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
+                        opcao = entrada.next();
+                        
+                        if(opcao.equals("1")) partida.iniciarPartida();
+                    } else if(opcao.equals("5")) {
+                		System.out.print("▷ Você realmente quer finalizar a partida? (1 - sim, `Qualquer coisa` - não): ");
+                        opcao = entrada.next();
+
+                        if(opcao.equals("1")) partida.encerrarPartida();
+                    } else {
+                        opcao = "0";
+                        pedirInserirNovamente();
+                    }
+            	}
             } else {
             	imprimirTituloInicio();
     			opcoes();
