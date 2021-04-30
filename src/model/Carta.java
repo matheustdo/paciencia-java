@@ -57,7 +57,7 @@ public class Carta {
 			return (bordaInicio + numeracao.toString() + " " + naipe.toString() + bordaFim);
 		}
 
-		/* Se a carta possuir dois caracteres, ela ficará como: [10░♥] */
+		/* Se a carta possuir dois caracteres, ela ficará como: [10 ♥] */
 		return (bordaInicio + numeracao.toString() + naipe.toString() + bordaFim);
 	}
 }
