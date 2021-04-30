@@ -1,10 +1,10 @@
 package model;
 
 public enum Naipe {
-	ESPADAS("♠", "Preto"),
-	COPAS("♥", "Vermelho"), 
-	PAUS("♣", "Preto"), 
-	OUROS("♦", "Vermelho");
+	ESPADAS("E", "Preto"), // ♠
+	COPAS("C", "Vermelho"),  // ♥
+	PAUS("P", "Preto"), // ♣
+	OUROS("O", "Vermelho"); //♦
 	
 	private String simbolo;
 	private String cor;

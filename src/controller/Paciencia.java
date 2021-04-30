@@ -125,6 +125,7 @@ public class Paciencia {
 	}
 	
 	public boolean temSequenciaNaFileira(int idMonte) {
+		if (idMonte < 1) return false;
 		MonteDeCartas mdc = montes.get(idMonte - 1);
 		
 		if (mdc instanceof Fileira) {
@@ -136,9 +137,11 @@ public class Paciencia {
 				if (c != null) {
 					if (c.getLado() == Lado.CIMA) {
 						aux.push(c);
-					}else {
+					} else {
 						break;
 					}
+				} else {
+					break;
 				}
 				
 			}
@@ -171,7 +174,7 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fundaï¿½ï¿½o" + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
 				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";

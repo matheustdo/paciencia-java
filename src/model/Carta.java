@@ -41,14 +41,14 @@ public class Carta {
 	
 	@Override
 	public String toString() {
-		if (this.lado == Lado.BAIXO) return "|< >|";
+		if (this.lado == Lado.BAIXO) return "[< >]";
 		
-		String bordaInicio = "┋";
-		String bordaFim = "┋";
+		String bordaInicio = "[";
+		String bordaFim = "]";
 		
 		if (naipe.getCor() == "Preto") {
-			bordaInicio = "┃";
-			bordaFim = "┃";
+			bordaInicio = "(";
+			bordaFim = ")";
 		}
 		
 		/* Para formatar a string da carta, se o valor dela tiver apenas 1 caractere, um espaço
