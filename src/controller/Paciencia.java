@@ -13,71 +13,111 @@ public class Paciencia {
 	
 	private static final int QUANTIDADE_FUNDACOES = 4;
 	private static final int QUANTIDADE_FILEIRAS = 7;
+	/*private int qtdCartasVirarEstoque = 3;*/
 	private MonteDeCartas estoque = new Estoque();
 	private MonteDeCartas descarte = new Descarte();
-	private ArrayList<Fundacao> fundacoes = new ArrayList<Fundacao>(QUANTIDADE_FUNDACOES);
-	private ArrayList<Fileira> fileiras = new ArrayList<Fileira>(QUANTIDADE_FILEIRAS);
+	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
 	
 	public Paciencia() {
 		
-		/* Instancia e adiciona pilhas na estrutura das fundações. */
+		montes.add(estoque);
+		montes.add(descarte);
+
 		for(int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Fundacao fundacao = new Fundacao();
-			fundacoes.add(fundacao);
+			montes.add(fundacao);
 		}
 		
-		/* Instancia e adiciona pilhas na estrutura das fileiras. */
 		for(int i = 0; i < QUANTIDADE_FILEIRAS; i++) {
 			Fileira fileira = new Fileira();
-			fileiras.add(fileira);
-		}
-		
-		/* Distribui as cartas do estoque nas fileiras disponíveis, onde cada fileira
-		 * recebe uma quantidade de cartas igual ao número da fileira. */
-		for(int i = 0; i < fileiras.size(); i++) {
-			Fileira fileira = fileiras.get(i);
-			
 			for(int j = 0; j <= i; j++) {
-				Carta carta = estoque.retirarCarta();
+				Carta carta = estoque.retirarCartaDoTopo();
 				fileira.preencher(carta);
 			}
-			
 			fileira.virarCartaDoTopo();
+			montes.add(fileira);
 		}
-		
+		log();
+		for (int i = 0; i < 24; i++) {
+			moverCarta(1,2);
+		}
+		log();
+		moverCarta(1,2);
+		log();
+		moverCarta(1,2);
 		log();
 	}
 	
+	/*
+	public void definirQtdDeCartasVirarEstoque (int n) {
+		qtdCartasVirarEstoque = n;
+	}
+	
+	public void virarCartaEstoque() {
+		for (int n = 0; n < qtdCartasVirarEstoque; n++) {
+			moverCartaEstoque();
+		}
+	}
+	
+	public void moverCartaEstoque() {
+		Carta c = estoque.retirarCartaDoTopo();
+		if (c != null) {
+			descarte.receberCarta(c);
+			return;
+		}
+		while (!descarte.estaVazio()) { 
+			Carta c2 = descarte.retirarCartaDoTopo();
+			estoque.receberCarta(c2);
+		}
+		
+	}*/
+	
+	public void moverCarta(int idOrigem, int idDestino) {
+		MonteDeCartas origem = montes.get(idOrigem - 1);
+		MonteDeCartas destino = montes.get(idDestino - 1);
+		
+		Carta c = origem.visualizarCartaDoTopo();
+		if (c != null) {
+			if (destino.receberCarta(c, origem.getClass())) {
+				origem.retirarCartaDoTopo();
+			}
+		}
+		else {
+			if (origem instanceof Estoque) {
+				while (!descarte.estaVazio()) { 
+					Carta c2 = descarte.retirarCartaDoTopo();
+					Estoque est = (Estoque) estoque;
+					est.restabelecer(c2, new Descarte().getClass());
+				}
+			}	
+		}
+	}
+	
+	
 	public void log() {
-		String visualizacaoEstoque = estoque.toString();
-		System.out.print("Estoque:   ");
-		
-		if(visualizacaoEstoque.length() > 2)
-			System.out.print(visualizacaoEstoque.substring(1, visualizacaoEstoque.length() - 1));
-		
-		System.out.println();
 
-		System.out.print("Descarte:  ");
-		System.out.print(descarte);
-		
-		System.out.println();
-		System.out.println();
-		
-		int idFundacao = 1;
-		for(Fundacao fundacao : fundacoes) {
-			System.out.print(idFundacao++ + " - Fundacao:  ");
-			System.out.println(fundacao);
+		int idMonte = 1;
+		for(MonteDeCartas monte : montes) {
+			if (monte instanceof Estoque) {
+				System.out.print(idMonte++ + " - Estoque: ");
+				System.out.println(monte);
+			}
+			else if (monte instanceof Descarte) {
+				System.out.print(idMonte++ + " - Descarte: ");
+				System.out.println(monte);
+			}
+			else if(monte instanceof Fundacao) {
+				System.out.print(idMonte++ + " - Fundação: ");
+				System.out.println(monte);
+			}else if(monte instanceof Fileira) {
+				System.out.print(idMonte++ + " - Fileira: ");
+				System.out.println(monte);
+			}
+			
 		}
 
 		System.out.println();
 		
-		int idFileira = 1;
-		for(Fileira fileira : fileiras) {
-			System.out.print(idFileira++ +" - Tableau:   ");
-			System.out.println(fileira);
-		}
-		
-		System.out.println();
 	}
 	
 }

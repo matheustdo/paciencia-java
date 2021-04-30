@@ -7,7 +7,7 @@ public class Fileira extends MonteDeCartas {
 	}
 	
 	@Override
-	public boolean receberCarta(Carta carta) {
+	public boolean receberCarta(Carta carta, Class classeOrigem) {
 		Carta topo = this.cartas.peek();
 		if (carta.getNumeracao().getValor() - topo.getNumeracao().getValor() == -1) {
 			if(!carta.getNaipe().getCor().equals(topo.getNaipe().getCor())) {

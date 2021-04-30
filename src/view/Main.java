@@ -3,6 +3,7 @@ package view;
 import java.util.Scanner;
 
 import controller.Partida;
+import controller.Paciencia;
 
 
 public class Main {
@@ -79,8 +80,9 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		new Partida();
-		menu();
+		/*new Partida();
+		menu();*/
+		new Paciencia();
 	}
 
 }
