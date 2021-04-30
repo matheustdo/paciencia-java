@@ -20,7 +20,7 @@ public class Main {
 		if(partida.temPartidaAtiva()) {
 			System.out.println("┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓");
 			System.out.println("┃  1 - Mover carta                                                                ┃");
-			System.out.println("┃  2 - Exibir jogo                                                                ┃");
+			System.out.println("┃  2 - Exibir carta                                                               ┃");
 			System.out.println("┃  3 - Alterar nº de cartas a virar do estoque                                    ┃");
 			System.out.println("┃  4 - Reiniciar                                                                  ┃");
 			System.out.println("┃  5 - Finalizar                                                                  ┃");
