@@ -34,4 +34,12 @@ public class Partida {
 	public boolean verificarVitoria() {
 		return paciencia.verificarVitoria();
 	}
+	
+	public boolean temPilha(int idMonte) {
+		return false;
+	}
+
+	public boolean moverPilha(int idOrigem, int idDestino, int quantidadeCartas) {
+		return false;
+	}
 }

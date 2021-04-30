@@ -133,22 +133,33 @@ public class Main {
                     opcao = entrada.next();
                     
                     if(opcao.equals("1")) {
-                		String idCartaOrigem;
                 		System.out.print("▷ Informe o monte no qual carta se encontra: ");
-                		idCartaOrigem = entrada.next();
+                		String idOrigemString = entrada.next();
                         
                         try {
-                            Integer.parseInt(idCartaOrigem);
+                            int idOrigem = Integer.parseInt(idOrigemString);
 
-                    		String idCartaDestino;
                     		System.out.print("▷ Informe o monte de destino da carta: ");
-                    		idCartaDestino = entrada.next();
-                            
-                            if (partida.moverCarta(Integer.parseInt(idCartaOrigem), Integer.parseInt(idCartaDestino))) {
-                            	mensagemInformacao = "✔ Carta movida com sucesso! \n";
-                            } else {
-                            	mensagemInformacao = "✖ Movimento inválido! \n";
-                            }
+                    		String idDestinoString = entrada.next();
+                            int idDestino = Integer.parseInt(idDestinoString);
+
+                    		if (partida.temPilha(idOrigem)) {
+                        		System.out.print("▷ Informe a quantidade de cartas que deseja mover: ");
+                        		String quantidadeCartasString = entrada.next();
+                                int quantidadeCartas = Integer.parseInt(quantidadeCartasString);
+
+                                if (partida.moverPilha(idOrigem, idDestino, quantidadeCartas)) {
+                                	mensagemInformacao = "✔ Pilha movida com sucesso! \n";
+                                } else {
+                                	mensagemInformacao = "✖ Movimento inválido! \n";
+                                }
+                    		} else {
+                                if (partida.moverCarta(idOrigem, idDestino)) {
+                                	mensagemInformacao = "✔ Carta movida com sucesso! \n";
+                                } else {
+                                	mensagemInformacao = "✖ Movimento inválido! \n";
+                                }
+                    		}
                         } catch (NumberFormatException e) {
                         	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
                         }
