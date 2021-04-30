@@ -20,6 +20,6 @@ public class Partida {
 	}
 	
 	public boolean moverCarta(int idOrigem, int idDestino) {
-		return paciencia.moverCarta(idOrigem, 0idDestino);
+		return paciencia.moverCarta(idOrigem, idDestino);
 	}
 }
