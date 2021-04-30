@@ -10,8 +10,7 @@ public class MonteDeCartas {
 		this.cartas = new Stack<Carta>();
 	}
 	
-	public boolean receberCarta(Carta carta, Class classeOrigem) {
-		System.out.println(classeOrigem);
+	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
 		this.cartas.push(carta);
 		return true;
 	}

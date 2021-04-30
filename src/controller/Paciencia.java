@@ -12,7 +12,7 @@ import model.Descarte;
 public class Paciencia {
 	private static final int QUANTIDADE_FUNDACOES = 4;
 	private static final int QUANTIDADE_FILEIRAS = 7;
-	/*private int qtdCartasVirarEstoque = 3;*/
+	private int qtdCartasVirarEstoque = 1;
 	private MonteDeCartas estoque = new Estoque();
 	private MonteDeCartas descarte = new Descarte();
 	private ArrayList<MonteDeCartas> montes = new ArrayList<MonteDeCartas>(2 + QUANTIDADE_FILEIRAS + QUANTIDADE_FUNDACOES);
@@ -35,19 +35,14 @@ public class Paciencia {
 			fileira.virarCartaDoTopo();
 			montes.add(fileira);
 		}
-		
-		for (int i = 0; i < 24; i++) {
-			moverCarta(1,2);
-		}
-		moverCarta(1,2);
-		moverCarta(1,2);
 	}
 	
-	/*
+	
 	public void definirQtdDeCartasVirarEstoque (int n) {
 		qtdCartasVirarEstoque = n;
 	}
 	
+	/*
 	public void virarCartaEstoque() {
 		for (int n = 0; n < qtdCartasVirarEstoque; n++) {
 			moverCartaEstoque();
@@ -67,25 +62,54 @@ public class Paciencia {
 		
 	}*/
 	
-	public void moverCarta(int idOrigem, int idDestino) {
+	public boolean moverCarta(int idOrigem, int idDestino) {
 		MonteDeCartas origem = montes.get(idOrigem - 1);
 		MonteDeCartas destino = montes.get(idDestino - 1);
 		
 		Carta c = origem.visualizarCartaDoTopo();
-		if (c != null) {
-			if (destino.receberCarta(c, origem.getClass())) {
-				origem.retirarCartaDoTopo();
-			}
-		}
-		else {
-			if (origem instanceof Estoque) {
+		if (c == null) {
+			if (origem instanceof Estoque) { // o estoque está vazio, é necessário reestabelece-lo
 				while (!descarte.estaVazio()) { 
 					Carta c2 = descarte.retirarCartaDoTopo();
 					Estoque est = (Estoque) estoque;
-					est.restabelecer(c2, new Descarte().getClass());
+					est.restabelecer(c2, (MonteDeCartas) descarte);
 				}
-			}	
+			}
+			return false; // a origem não possui carta, logo não é possível realizar o movimento.
 		}
+		
+		if (!(origem instanceof Estoque)) { // se a origem não é o estoque
+			if (destino.receberCarta(c, origem)) {
+				origem.retirarCartaDoTopo();
+				return true;
+			}
+			return false;
+		}else { // a origem é o estoque, logo há possibilidade de fornecer mais de uma carta
+			for (int n = 0; n < qtdCartasVirarEstoque; n++) {
+				if (destino.receberCarta(c, origem)) {
+					origem.retirarCartaDoTopo();
+				}else {
+					return false;
+				}
+			}
+			return true;
+		}	
+	}
+	
+	public boolean verificarVitoria() {
+		int qtdFundacoesCompletas = 0;
+		for(MonteDeCartas monte : montes) {
+			if(monte instanceof Fundacao) {
+				Fundacao f = (Fundacao) monte;
+				if(f.estaCompleta()) {
+					qtdFundacoesCompletas++;
+					if (qtdFundacoesCompletas == 4) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 
@@ -104,7 +128,7 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += idMonte++ + " - Funda��o" + String.valueOf(idMonte - 3) + ": ";
+				opcoes += idMonte++ + " - Fundação" + String.valueOf(idMonte - 3) + ": ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
 				opcoes += idMonte++ + " - Fileira" + String.valueOf(idMonte - 7) + ": ";

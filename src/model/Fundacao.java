@@ -7,16 +7,27 @@ public class Fundacao extends MonteDeCartas{
 	}
 	
 	@Override
-	public boolean receberCarta(Carta carta, Class classeOrigem) {
-		Carta topo = this.cartas.peek();
-		if (carta.getNumeracao().getValor() - topo.getNumeracao().getValor() == 1) {
-			if(carta.getNaipe().getCor().equals(topo.getNaipe().getCor())) {
+	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
+		if (origem instanceof Fileira) {
+			Carta topo = visualizarCartaDoTopo();
+			if (topo != null) {
+				if (carta.getNumeracao().getValor() - topo.getNumeracao().getValor() == 1) {
+					if(carta.getNaipe().getCor().equals(topo.getNaipe().getCor())) {
+						this.cartas.push(carta);
+						return true;
+					}
+				}	
+				return false;
+			} else if (carta.getNumeracao() == Numeracao.AS) {
 				this.cartas.push(carta);
 				return true;
 			}
 		}
-		
 		return false;
+	}
+	
+	public boolean estaCompleta() {
+		return (cartas.size() == 13);
 	}
 	
 }

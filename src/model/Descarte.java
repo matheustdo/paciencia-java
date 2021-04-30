@@ -8,8 +8,8 @@ public class Descarte extends MonteDeCartas{
 	}
 	
 	@Override
-	public boolean receberCarta(Carta carta, Class classeOrigem) {
-		if (classeOrigem == new Estoque().getClass()) {
+	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
+		if (origem instanceof Estoque) {
 			carta.mostrar();
 			this.cartas.push(carta);
 			return true;

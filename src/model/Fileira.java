@@ -7,16 +7,23 @@ public class Fileira extends MonteDeCartas {
 	}
 	
 	@Override
-	public boolean receberCarta(Carta carta, Class classeOrigem) {
-		Carta topo = this.cartas.peek();
-		if (carta.getNumeracao().getValor() - topo.getNumeracao().getValor() == -1) {
-			if(!carta.getNaipe().getCor().equals(topo.getNaipe().getCor())) {
+	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
+		if (!(origem instanceof Estoque)) {
+			Carta topo = visualizarCartaDoTopo();
+			if (topo != null) {
+				if (carta.getNumeracao().getValor() - topo.getNumeracao().getValor() == -1) {
+					if(!carta.getNaipe().getCor().equals(topo.getNaipe().getCor())) {
+						this.cartas.push(carta);
+						return true;
+					}
+				}	
+				return false;
+			}else if (carta.getNumeracao() == Numeracao.REI) {
 				this.cartas.push(carta);
 				return true;
 			}
 		}
-		
-		return false;
+		return false;	
 	}
 	
 	public void preencher(Carta carta) {

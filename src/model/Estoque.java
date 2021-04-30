@@ -19,12 +19,12 @@ public class Estoque extends MonteDeCartas {
 	}
 	
 	@Override
-	public boolean receberCarta(Carta carta, Class classeOrigem) {
+	public boolean receberCarta(Carta carta, MonteDeCartas origem) {
 		return false;
 	}
 	
-	public boolean restabelecer (Carta carta, Class classeOrigem) {
-		if (classeOrigem == new Descarte().getClass()) {
+	public boolean restabelecer (Carta carta, MonteDeCartas origem) {
+		if (origem instanceof Descarte) {
 			carta.esconder();
 			this.cartas.push(carta);
 			return true;
