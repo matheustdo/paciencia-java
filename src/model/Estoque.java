@@ -23,6 +23,17 @@ public class Estoque extends MonteDeCartas {
 		return false;
 	}
 	
+	@Override
+	public Carta virarCartaDoTopo() {
+		Carta topo = visualizarCartaDoTopo();
+		
+		if(!estaVazio()) {
+			topo.esconder();
+		}
+		
+		return topo;
+	}
+	
 	public boolean restabelecer (Carta carta, MonteDeCartas origem) {
 		if (origem instanceof Descarte) {
 			carta.esconder();

@@ -38,7 +38,7 @@ public class Paciencia {
 	}
 	
 	
-	public void definirQtdDeCartasVirarEstoque (int n) {
+	public void definirQtdVirarEstoque (int n) {
 		qtdCartasVirarEstoque = n;
 	}
 	
@@ -80,22 +80,30 @@ public class Paciencia {
 			return false; // a origem não possui carta, logo não é possível realizar o movimento.
 		}
 		
-		if (!(origem instanceof Estoque)) { // se a origem não é o estoque
+		if (origem instanceof Estoque) { // a origem é o estoque, logo há possibilidade de fornecer mais de uma carta
+			for (int n = 0; n < qtdCartasVirarEstoque; n++) {
+				c = origem.visualizarCartaDoTopo();
+				
+				if(!origem.estaVazio()) {
+					if (destino.receberCarta(c, origem)) {
+						origem.retirarCartaDoTopo();
+					} else {
+						return false;
+					}
+				}
+			}
+			return true;
+		} else { // se a origem não é o estoque
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
 			}
 			return false;
-		}else { // a origem é o estoque, logo há possibilidade de fornecer mais de uma carta
-			for (int n = 0; n < qtdCartasVirarEstoque; n++) {
-				if (destino.receberCarta(c, origem)) {
-					origem.retirarCartaDoTopo();
-				}else {
-					return false;
-				}
-			}
-			return true;
-		}	
+		} 
+	}
+	
+	public boolean exibirCarta() {
+		return moverCarta(1, 2);
 	}
 	
 	public boolean verificarVitoria() {
@@ -132,10 +140,10 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Funda��o" + String.valueOf(idMonte - 3) + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Funda��o" + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + String.valueOf(idMonte - 7) + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";
 				opcoes += monte + "\n";
 			}
 		}

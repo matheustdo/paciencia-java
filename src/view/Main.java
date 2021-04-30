@@ -107,9 +107,23 @@ public class Main {
                     	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
                     }
                 } else if(opcao.equals("2")) {
-                    
+                	partida.exibirCarta();
                 } else if(opcao.equals("3")) {
-             
+            		System.out.print("▷ Você deseja virar uma ou três cartas por vez? ");
+            		opcao = entrada.next();
+                    
+                    try {
+                    	int qtd = Integer.parseInt(opcao);
+                        
+                        if (qtd == 1 || qtd == 3) {
+                            partida.definirQtdVirarEstoque(qtd);
+                        	mensagemInformacao = "✔ Quantidade de cartas por vez alterada! \n";
+                        } else {
+                        	mensagemInformacao = "✖ Quantidade inválida! \n";
+                        }
+                    } catch (NumberFormatException e) {
+                    	mensagemInformacao = "✖ Você digirou um caractere inválido! \n";
+                    }
                 } else if(opcao.equals("4")) {
             		System.out.print("▷ Você realmente quer reiniciar o jogo? (1 - sim, `Qualquer coisa` - não): ");
                     opcao = entrada.next();

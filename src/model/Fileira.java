@@ -25,6 +25,17 @@ public class Fileira extends MonteDeCartas {
 		}
 		return false;	
 	}
+
+	@Override
+	public Carta retirarCartaDoTopo() {
+		if (!cartas.isEmpty()) {
+			Carta carta =  this.cartas.pop();
+			virarCartaDoTopo();
+			
+			return carta;
+		}
+		return null;
+	}
 	
 	public void preencher(Carta carta) {
 		this.cartas.push(carta);

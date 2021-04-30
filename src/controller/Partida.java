@@ -22,4 +22,12 @@ public class Partida {
 	public boolean moverCarta(int idOrigem, int idDestino) {
 		return paciencia.moverCarta(idOrigem, idDestino);
 	}
+	
+	public void definirQtdVirarEstoque(int qtd) {
+		paciencia.definirQtdVirarEstoque(qtd);
+	}
+	
+	public boolean exibirCarta() {
+		return paciencia.exibirCarta();
+	}
 }

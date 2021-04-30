@@ -31,11 +31,11 @@ public class MonteDeCartas {
 	
 	public Carta virarCartaDoTopo() {
 		Carta topo = visualizarCartaDoTopo();
-		if (topo.getLado() == Lado.BAIXO)
+		
+		if(!estaVazio()) {
 			topo.mostrar();
-		else {
-			topo.esconder();
 		}
+		
 		return topo;
 	}
 	
