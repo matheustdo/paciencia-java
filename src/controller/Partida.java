@@ -84,14 +84,7 @@ public class Partida {
 		moverDoDescarteParaFileira(6);
 		moverDoDescarteParaFileira(7);
 		log();
-		
-		MonteDeCartas mdc = new MonteDeCartas();
-		mdc.receberCarta(new Carta(Naipe.COPAS, Numeracao.AS));
-		
-		MonteDeCartas fnd = new Fundacao();
-		fnd.receberCarta(new Carta(Naipe.COPAS, Numeracao.AS));
-		fnd.retirarCarta();
-		
+
 	}
 	
 	public void log() {
