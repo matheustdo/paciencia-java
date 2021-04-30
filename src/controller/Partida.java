@@ -35,8 +35,8 @@ public class Partida {
 		return paciencia.verificarVitoria();
 	}
 	
-	public boolean temPilha(int idMonte) {
-		return false;
+	public boolean temSequenciaNaFileira(int idMonte) {
+		return paciencia.temSequenciaNaFileira(idMonte);
 	}
 
 	public boolean moverPilha(int idOrigem, int idDestino, int quantidadeCartas) {

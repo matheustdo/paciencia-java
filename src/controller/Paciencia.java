@@ -1,10 +1,12 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 import model.Carta;
 import model.MonteDeCartas;
 import model.Fundacao;
+import model.Lado;
 import model.Fileira;
 import model.Estoque;
 import model.Descarte;
@@ -122,6 +124,35 @@ public class Paciencia {
 		return false;
 	}
 	
+	public boolean temSequenciaNaFileira(int idMonte) {
+		MonteDeCartas mdc = montes.get(idMonte - 1);
+		
+		if (mdc instanceof Fileira) {
+			Fileira f = (Fileira) mdc;
+			
+			Stack<Carta> aux = new Stack<Carta>();
+			while(true) {
+				Carta c = f.retirarCartaDoTopo();	
+				if (c != null) {
+					if (c.getLado() == Lado.CIMA) {
+						aux.push(c);
+					}else {
+						break;
+					}
+				}
+				
+			}
+			int tamanhoDaSequencia = aux.size();
+			
+			while(!aux.isEmpty()) {
+				f.preencher(aux.pop());
+			}
+		
+			return (tamanhoDaSequencia > 1 ? true : false);
+		}
+		return false;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -140,7 +171,7 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fundaï¿½ï¿½o" + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
 				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";
