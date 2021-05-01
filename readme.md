@@ -14,7 +14,7 @@ Aqui, ele pode visualizar treze pilhas, que são identificadas por números ao l
 ![Tela da partida](docs/partida.png)
 
 As cartas pretas são identificadas pelos parênteses em volta, exemplo:
-- (5 C)
+- (A P)
 
 As cartas vermelhas são identificadas pelos colchetes em volta, exemplo:
 - [5 C]
