@@ -6,12 +6,12 @@ Esse jogo representa a primeira parte de um projeto que foi desenvolvido para a 
 ## Como jogar
 Ao iniciar o jogo, a tela inicial é exibida, onde o jogador pode selecionar se irá iniciar uma partida (digitando *1*), ou se vai finalizar a aplicação (digitando *2*), como mostrado na imagem abaixo:
 
-[Menu inicial](docs/inicio.png)
+![Menu inicial](docs/inicio.png)
 
 Agora, dentro da partida, o jogador tem a visão da mesa do jogo.
 Aqui, ele pode visualizar treze pilhas, que são identificadas por números ao lado esquerdo.
 
-[Tela da partida](docs/partida.png)
+![Tela da partida](docs/partida.png)
 
 As cartas pretas são identificadas pelos parênteses em volta, exemplo:
 - (5 C)
