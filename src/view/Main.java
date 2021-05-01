@@ -148,7 +148,7 @@ public class Main {
                         		String quantidadeCartasString = entrada.next();
                                 int quantidadeCartas = Integer.parseInt(quantidadeCartasString);
 
-                                if (partida.moverPilha(idOrigem, idDestino, quantidadeCartas)) {
+                                if (partida.moverSequencia(idOrigem, idDestino, quantidadeCartas)) {
                                 	mensagemInformacao = "- Pilha movida com sucesso! \n";
                                 } else {
                                 	mensagemInformacao = "X Movimento inválido! \n";
