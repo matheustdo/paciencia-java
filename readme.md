@@ -65,8 +65,16 @@ O jogador pode finalizar a partida e retornar ao menu principal ao digitar *5*.
 ## Modelo de baixo nível em UML
 
 ## Padrões utilizados e padrões que poderiam ser utilizados
+O Padrão Façade foi utilizado para prover uma interface simplificada ao cliente.
+O Padrão Iterator foi utilizado para percorrer coleções.
+O Padrão Strategy foi adotado para realizar a implementação do monte de cartas, que poderia ser um estoque, descarte, fileira ou fundação, uma vez que dependendo desses tipos eles se comportam diferente em determinados métodos.
+O Padrão Singleton poderia ser utilizado para restringir a classe estoque a uma única instância.
+O Padrão Bridge poderia ser utilizado para adotar composições de classes e evitar heranças.
 
 ## Pontos fortes e fracos do projeto
+Fortes: O principal ponto forte foi a utilização do padrão Strategy, que proporcionou diversos benefícios: como clarificar os algoritmos ao diminuir ou remover lógica condicional, simplificar a classe do jogo ao mover variações do algoritmo para a hierarquia de monte de cartas, e habilitar o algoritmo para ser substituído por outro em tempo de execução dependendo do seu tipo (estoque, descarte, fileira ou fundação). A utilização de enumerações também pode ser considerada algo positivo, pelo fato dele possibilitar uma normalização dos dados constantes.
+
+Fracos: Em maior parte o programa foi implementado utilizando heranças, o que pode ser visto como acoplamento de classes. As implementações que envolvem a movimentação de sequência de cartas de uma fileira para outra poderiam ser melhores abstraídas, assim como foi feito para os outros tipos de movimento de cartas. 
 
 
 ## Créditos
