@@ -2,6 +2,10 @@
 Esse jogo representa a primeira parte de um projeto que foi desenvolvido para a disciplina de Padrões e Frameworks (UEFS, 2021), que foi realizado a partir da linguagem de programação Java por Matheus Teles e Rafael Azevedo.
 
 ## Como o projeto implementa o Paciência
+O projeto utiliza a arquitetura *MVC (Modelo, Visão e Controlador)*, no qual o Modelo possui as seguintes classes: Carta, MonteDeCartas, Estoque, Descarte, Fileira e Fundação. Carta representa uma unidade de um MonteDeCartas que é implementado utilizando uma pilha. As demais classes respeitam uma hierarquia de herança, na qual a classe pai é MonteDeCartas e implementam seus métodos que a depender da regra do jogo são sobrescritos de acordo com o tipo.  No Modelo também possui as seguintes enumerações: Naipe, Numeração (número da carta) e Lado (para cima ou para baixo) que foram utilizados como atributos de Carta.
+O Controlador é representado pela classe Paciência, que possui uma coleção de MonteDeCartas que o jogador irá interagir. O construtor dessa classe é responsável pela criação do estado inicial do jogo, além disso é nessa classe que estão implementados os métodos de movimentação de cartas, definição de quantas cartas virar do estoque e verificação de vitória. 
+Para que a View não acesse o controlador diretamente, ela acessa os métodos através de uma Fachada que foi nomeada de Partida.
+Em Visão está implementado a interface com o usuário totalmente caracter, que permite o fluxo de ações a serem tomadas e a visualização atual do jogo, assim como a exibição da tela de vitória.
 
 ## Como jogar
 Ao iniciar o jogo, a tela inicial é exibida, onde o jogador pode selecionar se irá iniciar uma partida (digitando *1*), ou se vai finalizar a aplicação (digitando *2*), como mostrado na imagem abaixo:
