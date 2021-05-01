@@ -45,26 +45,6 @@ public class Paciencia {
 		qtdCartasVirarEstoque = n;
 	}
 	
-	/*
-	public void virarCartaEstoque() {
-		for (int n = 0; n < qtdCartasVirarEstoque; n++) {
-			moverCartaEstoque();
-		}
-	}
-	
-	public void moverCartaEstoque() {
-		Carta c = estoque.retirarCartaDoTopo();
-		if (c != null) {
-			descarte.receberCarta(c);
-			return;
-		}
-		while (!descarte.estaVazio()) { 
-			Carta c2 = descarte.retirarCartaDoTopo();
-			estoque.receberCarta(c2);
-		}
-		
-	}*/
-	
 	public boolean moverCarta(int idOrigem, int idDestino) {
 		if(idOrigem  < 1 || idDestino < 1) return false;
 			
@@ -139,6 +119,7 @@ public class Paciencia {
 					if (c.getLado() == Lado.CIMA) {
 						aux.push(c);
 					} else {
+						f.preencher(c);
 						break;
 					}
 				} else {
@@ -176,6 +157,7 @@ public class Paciencia {
 					if (c.getLado() == Lado.CIMA) {
 						aux.push(c);
 					} else {
+						fileiraOrigem.preencher(c);
 						break;
 					}
 				} else {
@@ -193,13 +175,13 @@ public class Paciencia {
 					while(!aux.isEmpty()) {
 						fileiraDestino.preencher(aux.pop());	
 					}
+					fileiraOrigem.virarCartaDoTopo();
 					return true;
 				}else {
 					fileiraOrigem.preencher(topoOrigem);
 				}
 			}
 			while(!aux.isEmpty()) {
-				
 				fileiraOrigem.preencher(aux.pop());
 			}
 			return false;
