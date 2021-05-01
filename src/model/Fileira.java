@@ -41,4 +41,11 @@ public class Fileira extends MonteDeCartas {
 		this.cartas.push(carta);
 	}
 	
+	public Carta retirar() {
+		if (!cartas.isEmpty()) {
+			return this.cartas.pop();
+		}
+		return null;
+	}
+	
 }

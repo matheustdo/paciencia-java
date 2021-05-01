@@ -5,6 +5,7 @@ import java.util.Stack;
 
 import model.Carta;
 import model.MonteDeCartas;
+import model.Numeracao;
 import model.Fundacao;
 import model.Lado;
 import model.Fileira;
@@ -133,7 +134,7 @@ public class Paciencia {
 			
 			Stack<Carta> aux = new Stack<Carta>();
 			while(true) {
-				Carta c = f.retirarCartaDoTopo();	
+				Carta c = f.retirar();	
 				if (c != null) {
 					if (c.getLado() == Lado.CIMA) {
 						aux.push(c);
@@ -156,6 +157,57 @@ public class Paciencia {
 		return false;
 	}
 	
+	public boolean moverSequencia(int idOrigem, int idDestino, int quantidadeCartas) {
+		if(idOrigem  < 1 || idDestino < 1) return false;
+		
+		MonteDeCartas origem = montes.get(idOrigem - 1);
+		MonteDeCartas destino = montes.get(idDestino - 1);
+		
+		Stack<Carta> aux = new Stack<Carta>();
+		
+		if (origem instanceof Fileira && destino instanceof Fileira) {
+			Fileira fileiraOrigem = (Fileira) origem;
+			Fileira fileiraDestino = (Fileira) destino;
+			
+			int count = 0;
+			while(count < quantidadeCartas) {
+				Carta c = fileiraOrigem.retirar();
+				if (c != null) {
+					if (c.getLado() == Lado.CIMA) {
+						aux.push(c);
+					} else {
+						break;
+					}
+				} else {
+					break;
+				}
+				count++;
+			}
+			
+
+			if (aux.size() == quantidadeCartas) {
+				Carta topoOrigem = aux.pop();
+				boolean inseriu = fileiraDestino.receberCarta(topoOrigem, fileiraOrigem);
+				
+				if (inseriu) {
+					while(!aux.isEmpty()) {
+						fileiraDestino.preencher(aux.pop());	
+					}
+					return true;
+				}else {
+					fileiraOrigem.preencher(topoOrigem);
+				}
+			}
+			while(!aux.isEmpty()) {
+				
+				fileiraOrigem.preencher(aux.pop());
+			}
+			return false;
+						
+		}
+		return false;
+	}
+	
 
 	@Override
 	public String toString() {
@@ -174,7 +226,7 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fundaï¿½ï¿½o" + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
 				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";

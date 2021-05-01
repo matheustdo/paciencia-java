@@ -39,7 +39,7 @@ public class Partida {
 		return paciencia.temSequenciaNaFileira(idMonte);
 	}
 
-	public boolean moverPilha(int idOrigem, int idDestino, int quantidadeCartas) {
-		return false;
+	public boolean moverSequencia(int idOrigem, int idDestino, int quantidadeCartas) {
+		return paciencia.moverSequencia(idOrigem, idDestino, quantidadeCartas);
 	}
 }

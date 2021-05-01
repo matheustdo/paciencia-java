@@ -6,15 +6,15 @@ Esse jogo representa a primeira parte de um projeto que foi desenvolvido para a 
 ## Como jogar
 Ao iniciar o jogo, a tela inicial é exibida, onde o jogador pode selecionar se irá iniciar uma partida (digitando *1*), ou se vai finalizar a aplicação (digitando *2*), como mostrado na imagem abaixo:
 
-[Menu inicial](docs/inicio.png)
+![Menu inicial](docs/inicio.png)
 
 Agora, dentro da partida, o jogador tem a visão da mesa do jogo.
 Aqui, ele pode visualizar treze pilhas, que são identificadas por números ao lado esquerdo.
 
-[Tela da partida](docs/partida.png)
+![Tela da partida](docs/partida.png)
 
 As cartas pretas são identificadas pelos parênteses em volta, exemplo:
-- (5 C)
+- (A P)
 
 As cartas vermelhas são identificadas pelos colchetes em volta, exemplo:
 - [5 C]
@@ -35,15 +35,15 @@ Ao selecionar essa opção, ele deve escolher um número que identifique a pilha
 
 As regras são:
 
-> Do estoque (pilha *1*) a carta só pode ir para o descarte (pilha *2*);
-> Do descarte (pilha *2*) a carta só pode ir para qualquer uma das pilhas de fundação (pilhas *3*-*6*) ou pilhas de fileiras (pilhas *7*-*13*);
-> As cartas não podem ir de nenhuma pilha para o estoque. As únicas formas das cartas voltarem pro estoque é se ele estiver vazio e for solicitado que se mova cartas do estoque para o descarte ou se ele estiver vazio e for solicitado para exibir alguma carta (caso existam cartas no descarte).
-> As cartas não podem voltar de uma fundação ou fileira para o descarte.
-> As cartas das _fundações_ começam com um *Ás* e precisam seguir uma ordem ascendente do mesmo naipe.
-> As cartas das _fundações_ podem ir para as _fileiras_, e o contrário também.
-> As cartas das _fileiras_ precisam ser encaixadas seguindo uma ordem decrescente, alternando-se as cores dos naipes.
-> Caso uma _fileira_ contenha uma pilha de cartas ordenadas viradas para cima, o jogador é perguntado se é desejado mover mais de uma carta de vez.
-> Se uma _fileira_ estiver vazia, só é possível inserir uma carta nela se for um rei (carta *K*)
+- Do estoque (pilha *1*) a carta só pode ir para o descarte (pilha *2*);
+- Do descarte (pilha *2*) a carta só pode ir para qualquer uma das pilhas de fundação (pilhas *3*-*6*) ou pilhas de fileiras (pilhas *7*-*13*);
+- As cartas não podem ir de nenhuma pilha para o estoque. As únicas formas das cartas voltarem pro estoque é se ele estiver vazio e for solicitado que se mova cartas do estoque para o descarte ou se ele estiver vazio e for solicitado para exibir alguma carta (caso existam cartas no descarte).
+- As cartas não podem voltar de uma fundação ou fileira para o descarte.
+- As cartas das _fundações_ começam com um *Ás* e precisam seguir uma ordem ascendente do mesmo naipe.
+- As cartas das _fundações_ podem ir para as _fileiras_, e o contrário também.
+- As cartas das _fileiras_ precisam ser encaixadas seguindo uma ordem decrescente, alternando-se as cores dos naipes.
+- Caso uma _fileira_ contenha uma pilha de cartas ordenadas viradas para cima, o jogador é perguntado se é desejado mover mais de uma carta de vez.
+- Se uma _fileira_ estiver vazia, só é possível inserir uma carta nela se for um rei (carta *K*)
 
 ### Exibir carta
 O jogador pode exibir cartas ao digitar *2*.
