@@ -1,5 +1,8 @@
 package model;
 
+/**
+* Esta classe representa uma Carta de baralho.
+*/
 public class Carta {
 	private Naipe naipe;
 	private Numeracao numeracao;
