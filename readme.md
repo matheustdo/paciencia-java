@@ -67,6 +67,7 @@ O jogador pode finalizar a partida e retornar ao menu principal ao digitar *5*.
 ## Modelo conceitual em UML
 
 ## Modelo de baixo nível em UML
+![Modelo de baixo nível](docs/diagrama_baixo_nivel.jpg)
 
 ## Padrões utilizados e padrões que poderiam ser utilizados
 O Padrão Façade foi utilizado para prover uma interface simplificada ao cliente.
