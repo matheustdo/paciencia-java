@@ -248,7 +248,7 @@ public class Paciencia {
 				opcoes += monte + "\n";
 			}
 			else if(monte instanceof Fundacao) {
-				opcoes += "   " + idMonte++ + espacamento + "- Fundaï¿½ï¿½o" + ":  ";
+				opcoes += "   " + idMonte++ + espacamento + "- Fundação" + ":  ";
 				opcoes += monte + "\n";
 			}else if(monte instanceof Fileira) {
 				opcoes += "   " + idMonte++ + espacamento + "- Fileira" + ":   ";
