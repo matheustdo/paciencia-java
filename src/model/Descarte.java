@@ -11,7 +11,7 @@ public class Descarte extends MonteDeCartas{
 	}
 	
 	/*
-	* Esta função sobrescrita implementa como Estoque recebe uma carta.
+	* Esta função sobrescrita implementa como Descarte recebe uma carta.
 	* @param carta a ser recebida.
 	* @param monte de origem.
 	* @return se a carta foi recebida ou não.
