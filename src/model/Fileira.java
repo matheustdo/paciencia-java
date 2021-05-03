@@ -10,7 +10,7 @@ public class Fileira extends MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o sobrescrita implementa como Fileira recebe uma carta.
+	* Esta funÁ„o sobrescrita implementa como Fileira recebe uma carta.
 	* @param carta a ser recebida.
 	* @param monte de origem.
 	* @return se a carta foi recebida ou n√£o.
@@ -27,7 +27,7 @@ public class Fileira extends MonteDeCartas {
 					}
 				}	
 				return false;
-			}else if (carta.getNumeracao() == Numeracao.REI) { // se est√° vazio, s√≥ pode REI
+			}else if (carta.getNumeracao() == Numeracao.REI) { // se est· vazio, sÛ pode REI
 				this.cartas.push(carta);
 				return true;
 			}
@@ -36,7 +36,7 @@ public class Fileira extends MonteDeCartas {
 	}
 	
 	/**
-	* Esta fun√ß√£o sobrescrita implementa como Fileira deve se comportar ao retirar uma carta do topo.
+	* Esta funÁ„o sobrescrita implementa como Fileira deve se comportar ao retirar uma carta do topo.
 	* @return carta que foi retirada do topo.
 	*/
 	@Override

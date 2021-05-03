@@ -7,14 +7,14 @@ import java.util.Stack;
 */
 public class MonteDeCartas {
 	
-	protected Stack<Carta> cartas; // um monte √© representado por uma pilha
+	protected Stack<Carta> cartas; // um monte È representado por uma pilha
 	
 	public MonteDeCartas() {
 		this.cartas = new Stack<Carta>();
 	}
 	
 	/**
-	* Esta fun√ß√£o define como o monte de cartas deve receber uma carta.
+	* Esta funÁ„o define como o monte de cartas deve receber uma carta.
 	* @param carta a ser recebida.
 	* @param monte de origem.
 	* @return se a carta foi recebida ou n√£o
@@ -25,7 +25,7 @@ public class MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o permite retirar uma carta do topo.
+	* Esta funÁ„o permite retirar uma carta do topo.
 	* @return carta do topo que foi retirada.
 	*/
 	public Carta retirarCartaDoTopo() {
@@ -36,8 +36,8 @@ public class MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o permite visualizar uma carta do topo.
-	* @return carta do topo para visualiza√ß√£o.
+	* Esta funÁ„o permite visualizar uma carta do topo.
+	* @return carta do topo para visualizaÁ„o.
 	*/
 	public Carta visualizarCartaDoTopo() {
 		if (!cartas.isEmpty()) {
@@ -47,7 +47,7 @@ public class MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o permite virar uma carta do topo.
+	* Esta funÁ„o permite virar uma carta do topo.
 	* @return carta do topo que foi virada.
 	*/
 	public Carta virarCartaDoTopo() {
@@ -61,8 +61,8 @@ public class MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o retorna se o monte est√° vazio.
-	* @return se est√° vazio ou n√£o.
+	* Esta funÁ„o retorna se o monte est· vazio.
+	* @return se est· vazio ou n„o.
 	*/
 	public boolean estaVazio() {
 		return cartas.isEmpty();

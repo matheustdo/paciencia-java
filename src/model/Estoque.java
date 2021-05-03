@@ -19,7 +19,7 @@ public class Estoque extends MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o sobrescrita implementa como Estoque recebe uma carta.
+	* Esta funÁ„o sobrescrita implementa como Estoque recebe uma carta.
 	* @param carta a ser recebida.
 	* @param monte de origem.
 	* @return se a carta foi recebida ou n√£o.
@@ -30,7 +30,7 @@ public class Estoque extends MonteDeCartas {
 	}
 	
 	/*
-	* Esta fun√ß√£o sobrescrita implementa como Estoque vira a carta do topo.
+	* Esta funÁ„o sobrescrita implementa como Estoque vira a carta do topo.
 	* @return carta do topo.
 	*/
 	@Override

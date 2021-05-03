@@ -11,10 +11,10 @@ public class Descarte extends MonteDeCartas{
 	}
 	
 	/*
-	* Esta fun√ß√£o sobrescrita implementa como Descarte recebe uma carta.
+	* Esta funÁ„o sobrescrita implementa como Descarte recebe uma carta.
 	* @param carta a ser recebida.
 	* @param monte de origem.
-	* @return se a carta foi recebida ou n√£o.
+	* @return se a carta foi recebida ou n„o.
 	*/
 	@Override
 	public boolean receberCarta(Carta carta, MonteDeCartas origem) {

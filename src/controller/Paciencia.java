@@ -13,7 +13,7 @@ import model.Estoque;
 import model.Descarte;
 
 /**
-* Essa classe representa o controlador do jogo PaciÃªncia.
+* Essa classe representa o controlador do jogo Paciência.
 */
 public class Paciencia {
 	private static final int QUANTIDADE_FUNDACOES = 4;
@@ -32,7 +32,7 @@ public class Paciencia {
 		montes.add(estoque);
 		montes.add(descarte);
 		
-		/*Adiciona as fundaÃ§Ãµes a lista de montes*/
+		/*Adiciona as fundações a lista de montes*/
 		for(int i = 0; i < QUANTIDADE_FUNDACOES; i++) {
 			Fundacao fundacao = new Fundacao();
 			montes.add(fundacao);
@@ -53,7 +53,7 @@ public class Paciencia {
 	}
 	
 	/**
-	* Essa funÃ§Ã£o permite definir a quantidade de cartas a serem viradas no estoque.
+	* Essa função permite definir a quantidade de cartas a serem viradas no estoque.
 	* @param quantidade de cartas.
 	*/
 	public void definirQtdVirarEstoque (int n) {
@@ -61,10 +61,10 @@ public class Paciencia {
 	}
 	
 	/**
-	* Essa funÃ§Ã£o permite o jogador mover a carta de um monte para outro.
+	* Essa função permite o jogador mover a carta de um monte para outro.
 	* @param identificador do monte de origem.
 	* @param identificador do monte de destino.
-	* @return se foi possÃ­vel realizar o movimento ou nÃ£o.
+	* @return se foi possível realizar o movimento ou não.
 	*/
 	public boolean moverCarta(int idOrigem, int idDestino) {
 		if(idOrigem  < 1 || idDestino < 1) return false;
@@ -74,17 +74,17 @@ public class Paciencia {
 		
 		Carta c = origem.visualizarCartaDoTopo();
 		if (c == null) {
-			if (origem instanceof Estoque) { // o estoque estÃ¡ vazio, Ã© necessÃ¡rio reestabelece-lo
+			if (origem instanceof Estoque) { // o estoque está vazio, é necessário reestabelece-lo
 				while (!descarte.estaVazio()) { 
 					Carta c2 = descarte.retirarCartaDoTopo();
 					Estoque est = (Estoque) estoque;
 					est.restabelecer(c2, (MonteDeCartas) descarte);
 				}
 			}
-			return false; // a origem nÃ£o possui carta, logo nÃ£o Ã© possÃ­vel realizar o movimento.
+			return false; // a origem não possui carta, logo não é possíel realizar o movimento.
 		}
 		
-		if (origem instanceof Estoque) { // a origem Ã© o estoque, logo hÃ¡ possibilidade de fornecer mais de uma carta
+		if (origem instanceof Estoque) { // a origem é o estoque, logo há possibilidade de fornecer mais de uma carta
 			for (int n = 0; n < qtdCartasVirarEstoque; n++) {
 				c = origem.visualizarCartaDoTopo();
 				
@@ -97,7 +97,7 @@ public class Paciencia {
 				}
 			}
 			return true;
-		} else { // se a origem nÃ£o Ã© o estoque
+		} else { // se a origem não é o estoque
 			if (destino.receberCarta(c, origem)) {
 				origem.retirarCartaDoTopo();
 				return true;
@@ -107,16 +107,16 @@ public class Paciencia {
 	}
 	
 	/**
-	* Essa funÃ§Ã£o retira carta do estoque para o descarte.
+	* Essa função retira carta do estoque para o descarte.
 	* @return se retirou ou nÃ£o.
 	*/
 	public boolean exibirCarta() {
-		return moverCarta(1, 2); // 1 Ã© estoque, 2 Ã© descarte
+		return moverCarta(1, 2); // 1 é estoque, 2 é descarte
 	}
 	
 	/**
-	* Essa funÃ§Ã£o verifica se o jogador venceu.
-	* @return se o jogador venceu ou nÃ£o.
+	* Essa função verifica se o jogador venceu.
+	* @return se o jogador venceu ou não.
 	*/
 	public boolean verificarVitoria() {
 		int qtdFundacoesCompletas = 0;
@@ -135,9 +135,9 @@ public class Paciencia {
 	}
 	
 	/**
-	* Essa funÃ§Ã£o verifica se uma fileira possui uma sequÃªncia de cartas.
+	* Essa função verifica se uma fileira possui uma sequência de cartas.
 	* @param identificador da fileira.
-	* @return se tem sequencia na fileira ou nÃ£o.
+	* @return se tem sequencia na fileira ou não.
 	*/
 	public boolean temSequenciaNaFileira(int idMonte) {
 		if (idMonte < 1) return false;
@@ -173,11 +173,11 @@ public class Paciencia {
 	}
 	
 	/**
-	* Esta funÃ§Ã£o permite o jogador mover uma sequÃªncia de uma fileira para outra.
+	* Esta função permite o jogador mover uma sequência de uma fileira para outra.
 	* @param identificador do monte de origem. 
 	* @param identificador do monte de destino.
 	* @param quantidade de cartas que deseja mover.
-	* @return se a sequÃªncia foi movida ou nÃ£o.
+	* @return se a sequência foi movida ou não.
 	*/
 	public boolean moverSequencia(int idOrigem, int idDestino, int quantidadeCartas) {
 		if(idOrigem  < 1 || idDestino < 1) return false;
