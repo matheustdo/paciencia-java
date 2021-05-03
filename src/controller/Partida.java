@@ -1,5 +1,8 @@
 package controller;
 
+/*
+* Essa classe representa um Facade.
+*/
 public class Partida {
 	private Paciencia paciencia = null;
 	
