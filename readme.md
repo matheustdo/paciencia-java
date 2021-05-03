@@ -65,7 +65,7 @@ O jogador pode reiniciar a partida ao inserir *4*.
 O jogador pode finalizar a partida e retornar ao menu principal ao digitar *5*.
 
 ## Modelo conceitual em UML
-![Modelo conceitual](docs/Diagrama Conceitual.png)
+![Modelo conceitual](docs/modeloconceitual.png)
 ## Modelo de baixo nível em UML
 ![Modelo de baixo nível](docs/diagrama_baixo_nivel.jpg)
 
